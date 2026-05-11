@@ -177,33 +177,15 @@ CodeForgeAI/
 │   └── main/
 │       └── java/com/CodeForge/aI/CodeForgeAI/
 │           ├── cli/
-│           │   ├── CodeForgeCli.java       # Entry point (CommandLineRunner)
-│           │   └── CommandRouter.java      # Routes commands to handlers
+│           │   ├── CodeForgeCli.java      
+│           │   └── CommandRouter.java      
 │           └── service/
-│               └── AIService.java          # AI API integration
+│               └── AIService.java        
 ├── src/main/resources/
-│   └── application.yaml                    # Spring Boot config
+│   └── application.yaml                    
 ├── pom.xml
 └── README.md
 ```
-
----
-
-## Configuration
-
-In `src/main/resources/application.yaml`:
-
-```yaml
-spring:
-  main:
-    banner-mode: off
-    web-application-type: none   # Keeps it a CLI, no web server
-
-logging:
-  level:
-    root: OFF
-```
-
 ---
 
 ## Built With
