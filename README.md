@@ -9,7 +9,6 @@ CodeForge is a command-line tool built with **Java + Spring Boot** that brings a
 - 🧠 **AI-powered** — understands and explains your code
 - 📂 **File-aware** — reads and analyzes files from your local machine
 - ⚡ **Fast** — runs as a native CLI command from anywhere
-- 🔧 **Extensible** — easy to add new commands via `CommandRouter`
 
 ## Commands
 
