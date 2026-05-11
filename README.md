@@ -17,6 +17,7 @@ CodeForge is a command-line tool built with **Java + Spring Boot** that brings a
 | `explain <file>` | Explains what a code file does | `codeforge explain UserService.java` |
 | `read <file>` | Reads and analyzes a file | `codeforge read D:/project/pom.xml` |
 | `help` | Shows available commands | `codeforge help` |
+| `generate` | generates code | `codeforge generate D:/project java generate bubble sort` |
 
 ---
 
