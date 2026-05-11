@@ -2,11 +2,3 @@ spring:
   application:
     name: CodeForgeAI
 
-  ai:
-    openai:
-      base-url: https://api.groq.com/openai/v1
-      api-key: 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
-
-      chat:
-        options:
-          model: llama-3.3-70b-versatile
