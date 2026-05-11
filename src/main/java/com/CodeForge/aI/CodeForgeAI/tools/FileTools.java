@@ -3,7 +3,6 @@ package com.CodeForge.aI.CodeForgeAI.tools;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Component;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
@@ -34,10 +33,13 @@ public class FileTools {
 
     @Tool(description = "Write generated code into a file. Creates folders if needed.")
     public String writeFile(
-            @ToolParam(description = "Full file path where file should be written")
+            @ToolParam(description = "Full file or folder path  where file should be written")
             String path,
             @ToolParam(description = "Complete file content")
-            String content) {
+            String content,
+            @ToolParam(description = "If true, overwrite file. If false, append")
+            Boolean overwrite
+    ) {
         try {
             Path filePath = Path.of(path);
 
@@ -45,12 +47,21 @@ public class FileTools {
                 Files.createDirectories(filePath.getParent());
             }
 
-            Files.writeString(
-                    filePath,
-                    content,
-                    StandardOpenOption.CREATE,
-                    StandardOpenOption.TRUNCATE_EXISTING
-            );
+            if (!overwrite) {
+                Files.writeString(
+                        filePath,
+                        content,
+                        StandardOpenOption.CREATE,
+                        StandardOpenOption.APPEND
+                );
+            } else {
+                Files.writeString(
+                        filePath,
+                        content,
+                        StandardOpenOption.CREATE,
+                        StandardOpenOption.TRUNCATE_EXISTING
+                );
+            }
 
             return "File written successfully: " + path;
         } catch (Exception e) {

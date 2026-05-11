@@ -61,29 +61,39 @@ public class CommandRouter {
     }
 
     private String generateCode(String[] args) {
-        if (args.length < 2) {
-            return "Usage: codeforge generate <file-path>";
+        if (args.length < 3) {
+            return "Usage: codeforge generate [-rw] <file-path> <language> <task>";
         }
 
-        String filePath = args[1];
+        boolean overWrite = false;
+        int index = 1;
+
+        if ("-rw".equals(args[index])) {
+            overWrite = true;
+            index++;
+        }
+
+        String filePath = args[index++];
+
+        if (index >= args.length) {
+            return "Missing language";
+        }
+
+        String language = args[index++];
 
         String task = String.join(" ",
-                Arrays.copyOfRange(args, 2, args.length)
+                Arrays.copyOfRange(args, index, args.length)
         );
-
 
         return aiService.askAgent(
                 """
                 You are a code generation agent.
-    
+        
                 Language: %s
                 Task: %s
-    
-                Rules:
-                - Return ONLY code
-                - No explanation
-                - Production-ready
-                """.formatted(filePath, task)
+                FilePath: %s
+                Overwrite: %s
+                """.formatted(language, task, filePath, overWrite)
         );
     }
 
@@ -97,6 +107,7 @@ public class CommandRouter {
                   read <file path>      → read file content
                   help             → show this help
                   generate <file path> <language> <task>  → generate code
+                  generate -rw <file path> <language> <task>  → generate code
                 
                 Examples:
                   codeforge explain pom.xml

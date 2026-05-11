@@ -12,12 +12,12 @@ CodeForge is a command-line tool based coding agent built with **Java + Spring B
 
 ## Commands
 
-| Command | Description | Example |
-|---|---|---|
-| `explain <file>` | Explains what a code file does | `codeforge explain UserService.java` |
-| `read <file>` | Reads and analyzes a file | `codeforge read D:/project/pom.xml` |
-| `help` | Shows available commands | `codeforge help` |
-| `generate` | generates code | `codeforge generate D:/project java generate bubble sort` |
+| Command                                        | Description                                                                                             | Example                                                        |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| `explain <file>`                               | Explains what a code file does                                                                          | `codeforge explain UserService.java`                           |
+| `read <file>`                                  | Reads and analyzes a file                                                                               | `codeforge read D:/project/pom.xml`                            |
+| `generate [-rw] <file-path> <language> <task>` | Generates code for a task. `-rw` enables overwrite mode (otherwise it appends or uses default behavior) | `codeforge generate -rw D:/project/Main.java java bubble sort` |
+| `help`                                         | Shows available commands                                                                                | `codeforge help`                                               |
 
 ---
 
