@@ -2,7 +2,7 @@
 
 > An AI-powered coding agent that lives in your terminal.
 
-CodeForge is a command-line tool built with **Java + Spring Boot** that brings an AI agent directly into your development workflow. Ask it to explain code, read files, or just chat with it about your codebase — all without leaving the terminal.
+CodeForge is a command-line tool based coding agent built with **Java + Spring Boot** that brings an AI agent directly into your development workflow. Ask it to explain code, read files, or just chat with it about your codebase — all without leaving the terminal.
 
 ## Features
 
