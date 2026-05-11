@@ -18,7 +18,6 @@ CodeForge is a command-line tool built with **Java + Spring Boot** that brings a
 | `explain <file>` | Explains what a code file does | `codeforge explain UserService.java` |
 | `read <file>` | Reads and analyzes a file | `codeforge read D:/project/pom.xml` |
 | `help` | Shows available commands | `codeforge help` |
-| `<anything>` | Ask the AI agent directly | `codeforge how do I reverse a string in Java` |
 
 ---
 
