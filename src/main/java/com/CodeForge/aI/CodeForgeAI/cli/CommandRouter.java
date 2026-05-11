@@ -3,6 +3,8 @@ package com.CodeForge.aI.CodeForgeAI.cli;
 import com.CodeForge.aI.CodeForgeAI.service.AIService;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Component
 public class CommandRouter {
 
@@ -27,6 +29,8 @@ public class CommandRouter {
             case "read" -> handleRead(args);
 
             case "help" -> help();
+
+            case "generate" -> generateCode(args);
 
             default -> aiService.askAgent(String.join(" ", args));
         };
@@ -56,6 +60,33 @@ public class CommandRouter {
         );
     }
 
+    private String generateCode(String[] args) {
+        if (args.length < 2) {
+            return "Usage: codeforge generate <file-path>";
+        }
+
+        String filePath = args[1];
+
+        String task = String.join(" ",
+                Arrays.copyOfRange(args, 2, args.length)
+        );
+
+
+        return aiService.askAgent(
+                """
+                You are a code generation agent.
+    
+                Language: %s
+                Task: %s
+    
+                Rules:
+                - Return ONLY code
+                - No explanation
+                - Production-ready
+                """.formatted(filePath, task)
+        );
+    }
+
     private String help() {
 
         return """
@@ -65,7 +96,8 @@ public class CommandRouter {
                   explain <file path>   → explain code file
                   read <file path>      → read file content
                   help             → show this help
-
+                  generate <file path> <language> <task>  → generate code
+                
                 Examples:
                   codeforge explain pom.xml
                   codeforge read D:/project/UserService.java
