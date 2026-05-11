@@ -1,6 +1,7 @@
 package com.CodeForge.aI.CodeForgeAI.tools;
 
 import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.Files;
@@ -14,7 +15,10 @@ public class FileTools {
     private static final Logger log = Logger.getLogger(FileTools.class.getName());
 
     @Tool(description = "Read file content")
-    public String readFile(String path) {
+    public String readFile(
+            @ToolParam(description = "Absolute or relative path of the file to read")
+            String path
+    ) {
         try {
             log.info("Reading file from path: " + path);
 
@@ -29,7 +33,11 @@ public class FileTools {
     }
 
     @Tool(description = "Write generated code into a file. Creates folders if needed.")
-    public String writeFile(String path , String content) {
+    public String writeFile(
+            @ToolParam(description = "Full file path where file should be written")
+            String path,
+            @ToolParam(description = "Complete file content")
+            String content) {
         try {
             Path filePath = Path.of(path);
 

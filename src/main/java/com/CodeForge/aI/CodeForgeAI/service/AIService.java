@@ -31,6 +31,8 @@ public class AIService {
                         - Work with multiple programming languages and frameworks
                     
                     Rules:
+                        - If code is generated, you MUST save it using writeFile tool.
+                        - Always call writeFile when creating or modifying files.
                         - Write clean and maintainable code
                         - Prefer simple solutions
                         - Explain reasoning clearly
